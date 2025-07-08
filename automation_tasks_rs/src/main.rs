@@ -160,12 +160,8 @@ fn task_build() {
     println!(
         r#"
   {YELLOW}After `cargo auto build`, run the compiled binary, examples and/or tests{RESET}
-{GREEN}./target/debug/{package_name} print world{RESET}
+{GREEN}./target/debug/{package_name} {RESET}
   {YELLOW}If ok then{RESET}
-{GREEN}./target/debug/{package_name} upper world{RESET}
-  {YELLOW}If ok then{RESET}
-{GREEN}./target/debug/{package_name} upper WORLD{RESET}
-  {YELLOW}if ok then{RESET}
 {GREEN}cargo auto release{RESET}
 "#,
         package_name = cargo_toml.package_name(),
@@ -180,12 +176,8 @@ fn task_release() {
     println!(
         r#"
   {YELLOW}After `cargo auto release`, run the compiled binary, examples and/or tests{RESET}
-{GREEN}./target/release/{package_name} print world{RESET}
+{GREEN}./target/release/{package_name} {RESET}
   {YELLOW}If ok then{RESET}
-{GREEN}./target/release/{package_name} upper world{RESET}
-  {YELLOW}If ok then{RESET}
-{GREEN}./target/release/{package_name} upper WORLD{RESET}
-  {YELLOW}if ok then{RESET}
 {GREEN}cargo auto doc{RESET}
 "#,
         package_name = cargo_toml.package_name(),
