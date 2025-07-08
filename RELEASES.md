@@ -12,6 +12,8 @@ The TODO section is part of the [README.md](https://github.com/bestia-dev/snake_
 
 ## Version 0.0.38 (2025-07-08)
 
+## Version 0.0.38 (2025-07-08)
+
 - return commits
 
 - update
