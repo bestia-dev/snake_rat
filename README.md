@@ -6,7 +6,7 @@
 [//]: # (auto_cargo_toml_to_md start)
 
 **A simple Snake game with Ratatui**  
-***version: 0.0.15 date: 2025-07-08 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/snake_rat)***
+***version: 0.0.38 date: 2025-07-08 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/snake_rat)***
 
  ![maintained](https://img.shields.io/badge/maintained-green)
  ![work-in-progress](https://img.shields.io/badge/work_in_progress-yellow)
@@ -18,11 +18,11 @@
   [![Rust](https://github.com/bestia-dev/snake_rat/workflows/rust_fmt_auto_build_test/badge.svg)](https://github.com/bestia-dev/snake_rat/)
 
 [//]: # (auto_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-116-green.svg)]()
-[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-1-blue.svg)]()
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-7-purple.svg)]()
-[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)]()
-[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)]()
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-208-green.svg)](https://github.com/bestia-dev/snake_rat/)
+[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-5-blue.svg)](https://github.com/bestia-dev/snake_rat/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-10-purple.svg)](https://github.com/bestia-dev/snake_rat/)
+[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/bestia-dev/snake_rat/)
+[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/bestia-dev/snake_rat/)
 
 [//]: # (auto_lines_of_code end)
 

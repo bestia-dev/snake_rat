@@ -51,6 +51,8 @@ fn match_arguments_and_call_tasks(mut args: std::env::Args) {
                     task_build();
                 } else if &task == "release" {
                     task_release();
+                } else if &task == "win_release" {
+                    task_win_release();
                 } else if &task == "doc" {
                     task_doc();
                 } else if &task == "test" {
@@ -81,6 +83,7 @@ fn print_help() {
   {YELLOW}User defined tasks in automation_tasks_rs:{RESET}
 {GREEN}cargo auto build{RESET} - {YELLOW}builds the crate in debug mode, fmt, increment version{RESET}
 {GREEN}cargo auto release{RESET} - {YELLOW}builds the crate in release mode, fmt, increment version{RESET}
+{GREEN}cargo auto win_release{RESET} - {YELLOW}builds the crate in release mode, for windows{RESET}
 {GREEN}cargo auto doc{RESET} - {YELLOW}builds the docs, copy to docs directory{RESET}
 {GREEN}cargo auto test{RESET} - {YELLOW}runs all the tests{RESET}
 {GREEN}cargo auto commit_and_push "message"{RESET} - {YELLOW}commits with message and push with mandatory message{RESET}
@@ -132,6 +135,7 @@ fn completion() {
         let sub_commands = vec![
             "build",
             "release",
+            "win_release",
             "doc",
             "test",
             "commit_and_push",
@@ -177,6 +181,7 @@ fn task_release() {
         r#"
   {YELLOW}After `cargo auto release`, run the compiled binary, examples and/or tests{RESET}
 {GREEN}./target/release/{package_name} {RESET}
+{GREEN}cargo auto win_release{RESET}
   {YELLOW}If ok then{RESET}
 {GREEN}cargo auto doc{RESET}
 "#,
@@ -195,6 +200,46 @@ fn task_doc() {
 {GREEN}cargo auto test{RESET}
 "#
     );
+}
+
+/// cargo build --release --target x86_64-pc-windows-gnu
+/// TODO: try cross compile to windows, because Linux has problems with file datetimes on external disk
+fn task_win_release() {
+    let cargo_toml = cl::CargoToml::read();
+    cl::auto_version_increment_semver_or_date();
+    cl::auto_cargo_toml_to_md();
+    cl::auto_lines_of_code("");
+
+    cl::run_shell_command_static("cargo fmt").unwrap_or_else(|e| panic!("{e}"));
+    cl::run_shell_command_static("cargo clippy --target x86_64-pc-windows-gnu").unwrap_or_else(|e| panic!("{e}"));
+    cl::run_shell_command_static("cargo build --release --target x86_64-pc-windows-gnu").unwrap_or_else(|e| panic!("{e}"));
+
+    // cl::ShellCommandLimitedDoubleQuotesSanitizer::new(r#"strip "target/release/{package_name}" "#)
+    //     .unwrap_or_else(|e| panic!("{e}"))
+    //     .arg("{package_name}", &cargo_toml.package_name())
+    //     .unwrap_or_else(|e| panic!("{e}"))
+    //     .run()
+    //     .unwrap_or_else(|e| panic!("{e}"));
+
+    println!(
+        r#"
+    {YELLOW}After `cargo auto win_release`, run the compiled binary, examples and/or tests{RESET}
+
+    {YELLOW}In Windows git-bash, copy the exe file from the Crustde container to Windows.{RESET}
+{GREEN}
+mkdir -p ~/git-bash/rustprojects/{package_name} 
+cd ~/git-bash/rustprojects/{package_name}
+scp rustdevuser@crustde:/home/rustdevuser/rustprojects/{package_name}/target/x86_64-pc-windows-gnu/release/{package_name}.exe /c/Users/Luciano/git-bash/rustprojects/{package_name}/{RESET}
+    {YELLOW}Run the exe in Windows git-bash.{RESET}
+{GREEN}
+./{package_name}.exe{RESET}
+
+    {YELLOW}if ok then{RESET}
+{GREEN}cargo auto doc{RESET}
+"#,
+        package_name = cargo_toml.package_name(),
+    );
+    print_examples_cmd();
 }
 
 /// cargo test
