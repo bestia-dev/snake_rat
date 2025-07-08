@@ -12,19 +12,7 @@ The TODO section is part of the [README.md](https://github.com/bestia-dev/snake_
 
 ## Version 0.0.38 (2025-07-08)
 
-## Version 0.0.38 (2025-07-08)
-
-- return commits
-
-- update
-
-## Version 0.0.8 (2025-03-29)
-
-- update automation
-
-## Version 0.0.5 (2025-03-17)
-
-- cargo_auto_lib = 3.0.12
+- snake_rat for linux and windows
 
 ## Version 0.0.1
 
