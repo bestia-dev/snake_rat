@@ -1,0 +1,1 @@
+searchState.loadedDescShard("snake_rat", 0, "src/bin/snake_rat/main.rs\nReturns the argument unchanged.\nCalls <code>U::from(self)</code>.")
